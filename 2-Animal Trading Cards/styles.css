@@ -1,0 +1,32 @@
+body{
+    font-family: 'Times New Roman',serif;
+    margin: 5px;
+}
+
+
+.animal{
+    border: 2px solid #eee;
+    padding:5px;
+    width:350px;
+}
+
+.animal img{
+    width: 100%;
+}
+
+.description{
+    border: 1px solid #eee;
+    padding:10px;
+}
+
+.description ul{
+    list-style: none;
+    padding:0;
+}
+.description ul span{
+    font-weight: bold;
+}
+.funfact{
+    font-size:14px;
+    font-style: italic;
+}
