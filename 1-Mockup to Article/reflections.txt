@@ -6,4 +6,8 @@ You've learned a lot about web development so far. I want you to take a moment t
 
 ---
 
-Your response goes here!
+1 - I have already completed FSND, so things are pretty familiar and easy no 
+new skills, but I learnt about the <del> and <sub>/<sup> tags.
+2 - Pretty much everything.
+3 - Nothing.
+4 - Yeah, Googling for relevant tags.
