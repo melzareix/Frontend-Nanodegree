@@ -138,11 +138,11 @@ Player.prototype.modifyLevel = function() {
 // Place the player object in a variable called player
 var player = new Player(PLAYER_INITIAL_X, PLAYER_INITIAL_Y);
 
-var e1 = new Enemy(60);
-var e2 = new Enemy(140);
-var e3 = new Enemy(220);
+var top_enemy = new Enemy(60);
+var mid_enemy = new Enemy(140);
+var bot_enemy = new Enemy(220);
 
-var allEnemies = [e1, e2, e3];
+var allEnemies = [top_enemy, mid_enemy, bot_enemy];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
