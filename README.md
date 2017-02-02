@@ -10,5 +10,5 @@ I started the nanodegree on **31/01/2017**.
 - [x] P5 Arcade Game Clone
 - [ ] P6 Website Optimization
 - [ ] P7 Neighborhood Map
-- [ ] P8 Feed Reader Testing
+- [x] P8 Feed Reader Testing
  
