@@ -6,7 +6,7 @@ I started the nanodegree on **31/01/2017**.
 - [x] P1 Mockup to Article
 - [x] P2 Animal Trading Cards
 - [x] P3 Personal Portfolio
-- [ ] P4 Interactive Resume
+- [x] P4 Interactive Resume
 - [x] P5 Arcade Game Clone
 - [ ] P6 Website Optimization
 - [x] P7 Neighborhood Map
