@@ -55,12 +55,12 @@ Enemy.prototype.update = function(dt) {
 };
 
 Enemy.prototype.checkCollisions = function(player) {
-    if (player.x < this.x + this.width &&
-        player.x + player.width > this.x &&
-        player.y < this.y + this.height &&
-        player.height + player.y > this.y) {
-        player.reset();
-    }
+  if (player.x < this.x + this.width &&
+      player.x + player.width > this.x &&
+      player.y < this.y + this.height &&
+      player.height + player.y > this.y) {
+    player.reset();
+  }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -93,7 +93,7 @@ Player.prototype.update = function() {
     this.y = CANVAS_HEIGHT - (this.height + 150);
   }
 
-// Player WON!
+  // Player WON!
   if (this.y <= 0) {
     this.y = CANVAS_HEIGHT - this.height - Y_RST_FACTOR;
     currentLevel++;
