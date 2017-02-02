@@ -86,10 +86,9 @@ $(function() {
       });
     });
 
-    it('should change it\'s content.', function(done) {
+    it('should change it\'s content.', function() {
       var newFeedHTML = document.querySelector('.feed').innerHTML;
       expect(newFeedHTML).not.toBe(prevFeedHTML);
-      done();
     });
 
   });

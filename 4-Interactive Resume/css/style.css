@@ -219,3 +219,7 @@ span {
     display: block;
   }
 }
+
+.thumbnail{
+  max-width: 20%;
+}
