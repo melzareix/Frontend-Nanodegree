@@ -1,0 +1,64 @@
+/*Zocial*/
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+
+[class*="zocial-"]:before {
+    font-family: 'zocial', sans-serif;
+}
+
+.zocial-dribbble {
+    color: #ea4c89;
+}
+
+/* Custom CSS */
+body {
+    font-family: "Lato", sans-serif;
+    color: #2d3c49;
+}
+
+hr {
+    border: none;
+    background-color: #7d97ad;
+    height: 5px;
+}
+
+header h3 {
+    font-weight: 300;
+}
+
+.logo {
+    padding-left: 0;
+}
+
+.my-info {
+    padding-right: 0;
+    text-align: right !important;
+}
+
+.main-image {
+    max-width: 100%;
+    margin: auto;
+}
+
+.featured {
+    color: #7d97ad;
+}
+
+.portfolio-item {
+    margin: 0 0 5px 0;
+}
+
+/* General Purpose CSS */
+.margin-top-10 {
+    margin: 10px 0 0;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/* Media Queries */
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+    .portfolio-item {
+        width: 50%;
+    }
+}
