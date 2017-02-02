@@ -6,33 +6,38 @@ var CANVAS_HEIGHT = 606;
 var X_RST_POS = 2;
 var Y_RST_FACTOR = 42;
 
-var PLAYER_INITIAL_X = CANVAS_WIDTH / 2 - 50;
-var PLAYER_INITIAL_Y = CANVAS_HEIGHT / 2 + 50;
+var ADJUST_VALUE = 50;
+
+var PLAYER_INITIAL_X = CANVAS_WIDTH / 2 - ADJUST_VALUE;
+var PLAYER_INITIAL_Y = CANVAS_HEIGHT / 2 + ADJUST_VALUE;
 
 var MAX_LEVELS = 5;
 
 var currentLevel = 1;
 
-var Enemy = function(y) {
-  // Variables applied to each of our instances go here,
-  // we've provided one for you to get started
-
-  // The image/sprite for our enemies, this uses
-  // a helper we've provided to easily load images
-  this.sprite = 'images/enemy-bug.png';
-
-  this.width = 90;
-  this.height = 60;
-
-  this.x = 0;
+// Character Superclass.
+var Character = function(x, y, sprite, width, height) {
+  this.x = x;
   this.y = y;
-
-  this.speedFactor = getRandomNumber();
+  this.sprite = sprite;
+  this.width = width;
+  this.height = height;
 };
 
-function getRandomNumber() {
-  return Math.floor((Math.random() * 150) + 50);
-}
+// Draw the character on the screen.
+Character.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+var Enemy = function(y) {
+  Character.call(this, 0, y, 'images/enemy-bug.png', 90, 60);
+  this.speedFactor = this.getRandomNumber();
+};
+Enemy.prototype = Object.create(Character.prototype);
+
+Enemy.prototype.getRandomNumber = function() {
+  return Math.floor((Math.random() * 150) + ADJUST_VALUE);
+};
 
 Enemy.prototype.speed = function() {
   return currentLevel * (Math.pow(2, currentLevel) + this.speedFactor);
@@ -42,9 +47,6 @@ Enemy.prototype.speed = function() {
 // Parameter: dt, a time delta between ticks
 
 Enemy.prototype.update = function(dt) {
-  // You should multiply any movement by the dt parameter
-  // which will ensure the game runs at the same speed for
-  // all computers.
   this.x += dt * this.speed();
 
   if (this.x >= CANVAS_WIDTH) {
@@ -63,24 +65,13 @@ Enemy.prototype.checkCollisions = function(player) {
   }
 };
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 
 var Player = function(x, y) {
-  this.sprite = 'images/char-boy.png';
-
-  this.width = 90;
-  this.height = 60;
-
-  this.x = x;
-  this.y = y;
+  Character.call(this, x, y, 'images/char-boy.png', 90, 60);
+  this.speed = ADJUST_VALUE;
 };
+
+Player.prototype = Object.create(Character.prototype);
 
 Player.prototype.update = function() {
   if (this.x >= (CANVAS_WIDTH - this.width)) {
@@ -97,28 +88,24 @@ Player.prototype.update = function() {
   if (this.y <= 0) {
     this.y = CANVAS_HEIGHT - this.height - Y_RST_FACTOR;
     currentLevel++;
-    modifyLevel();
+    this.modifyLevel();
     this.win();
   }
-};
-
-Player.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 Player.prototype.handleInput = function(key) {
   switch (key) {
     case 'left':
-      this.x -= 50;
+      this.x -= this.speed;
       break;
     case 'right':
-      this.x += 50;
+      this.x += this.speed;
       break;
     case 'up':
-      this.y -= 50;
+      this.y -= this.speed;
       break;
     default:
-      this.y += 50;
+      this.y += this.speed;
   }
   this.update();
 };
@@ -136,15 +123,15 @@ Player.prototype.reset = function() {
     enemy.x = 0;
   });
 
-  player.x = PLAYER_INITIAL_X;
-  player.y = PLAYER_INITIAL_Y;
+  this.x = PLAYER_INITIAL_X;
+  this.y = PLAYER_INITIAL_Y;
 
-  modifyLevel();
+  this.modifyLevel();
 };
 
-function modifyLevel() {
+Player.prototype.modifyLevel = function() {
   alertify.maxLogItems(1).log('Current Level : ' + currentLevel);
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
