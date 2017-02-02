@@ -14,6 +14,7 @@ var PLAYER_INITIAL_Y = CANVAS_HEIGHT / 2 + ADJUST_VALUE;
 var MAX_LEVELS = 5;
 
 var currentLevel = 1;
+var player, allEnemies;
 
 // Character Superclass.
 var Character = function(x, y, sprite, width, height) {
@@ -138,13 +139,13 @@ Player.prototype.modifyLevel = function() {
 // Place the player object in a variable called player
 
 function init() {
-  var player = new Player(PLAYER_INITIAL_X, PLAYER_INITIAL_Y);
+  player = new Player(PLAYER_INITIAL_X, PLAYER_INITIAL_Y);
 
   var top_enemy = new Enemy(60);
   var mid_enemy = new Enemy(140);
   var bot_enemy = new Enemy(220);
 
-  var allEnemies = [top_enemy, mid_enemy, bot_enemy];
+  allEnemies = [top_enemy, mid_enemy, bot_enemy];
 }
 
 init();
