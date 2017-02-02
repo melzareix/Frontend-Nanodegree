@@ -49,11 +49,6 @@ $(function() {
     });
 
     it('should change visibility on click', function() {
-      /* TODO: Write a test that ensures the menu changes
-       * visibility when the menu icon is clicked. This test
-       * should have two expectations: does the menu display when
-       * clicked and does it hide when clicked again.
-       */
       menuIcon.click();
       expect(body.className).not.toContain('menu-hidden');
 
@@ -67,9 +62,7 @@ $(function() {
   describe('Initial Entries', function() {
 
     beforeEach(function(done) {
-      loadFeed(0, function() {
-        done();
-      });
+      loadFeed(0, done);
     });
 
     it('should contain at least a single entry.', function(done) {
@@ -94,7 +87,7 @@ $(function() {
     });
 
     it('should change it\'s content.', function(done) {
-      var newFeedHTML = document.querySelector('.feed').newFeedHTML;
+      var newFeedHTML = document.querySelector('.feed').innerHTML;
       expect(newFeedHTML).not.toBe(prevFeedHTML);
       done();
     });
