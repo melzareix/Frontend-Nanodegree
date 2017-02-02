@@ -51,7 +51,16 @@ Enemy.prototype.update = function(dt) {
     this.x = -CANVAS_WIDTH / 2;
   }
 
-  player.checkCollisions(this);
+  this.checkCollisions(player);
+};
+
+Enemy.prototype.checkCollisions = function(player) {
+    if (player.x < this.x + this.width &&
+        player.x + player.width > this.x &&
+        player.y < this.y + this.height &&
+        player.height + player.y > this.y) {
+        player.reset();
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -136,17 +145,6 @@ Player.prototype.reset = function() {
 function modifyLevel() {
   alertify.maxLogItems(1).log('Current Level : ' + currentLevel);
 }
-
-Player.prototype.checkCollisions = function(rect1) {
-  var rect2 = this;
-
-  if (rect1.x < rect2.x + rect2.width &&
-    rect1.x + rect1.width > rect2.x &&
-    rect1.y < rect2.y + rect2.height &&
-    rect1.height + rect1.y > rect2.y) {
-    this.reset();
-  }
-};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
