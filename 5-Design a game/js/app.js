@@ -136,14 +136,18 @@ Player.prototype.modifyLevel = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(PLAYER_INITIAL_X, PLAYER_INITIAL_Y);
 
-var top_enemy = new Enemy(60);
-var mid_enemy = new Enemy(140);
-var bot_enemy = new Enemy(220);
+function init() {
+  var player = new Player(PLAYER_INITIAL_X, PLAYER_INITIAL_Y);
 
-var allEnemies = [top_enemy, mid_enemy, bot_enemy];
+  var top_enemy = new Enemy(60);
+  var mid_enemy = new Enemy(140);
+  var bot_enemy = new Enemy(220);
 
+  var allEnemies = [top_enemy, mid_enemy, bot_enemy];
+}
+
+init();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {

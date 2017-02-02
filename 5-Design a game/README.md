@@ -9,5 +9,10 @@ of the street without hitting the bugs.
 - **Can you beat the bugs?**
 
 ## How to run
-- Clone the repo or download the `.zip` file, and run `index.html`.
+- Clone the repo or download the `.zip` file.
 
+    `git clone https://github.com/melzareix/Frontend-Nanodegree.git`
+
+- Run the file 
+   
+     `Frontend-Nanodegree/5-Design a game/index.html`
