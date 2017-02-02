@@ -1,18 +1,19 @@
 // Enemies our player must avoid
-const CANVAS_WIDTH = 505;
-const CANVAS_HEIGHT = 606;
+'use strict';
+var CANVAS_WIDTH = 505;
+var CANVAS_HEIGHT = 606;
 
-const X_RST_POS = 2;
-const Y_RST_FACTOR = 42;
+var X_RST_POS = 2;
+var Y_RST_FACTOR = 42;
 
-const PLAYER_INITIAL_X = CANVAS_WIDTH / 2 - 50;
-const PLAYER_INITIAL_Y = CANVAS_HEIGHT / 2 + 50;
+var PLAYER_INITIAL_X = CANVAS_WIDTH / 2 - 50;
+var PLAYER_INITIAL_Y = CANVAS_HEIGHT / 2 + 50;
 
-const MAX_LEVELS = 5;
+var MAX_LEVELS = 5;
 
 var currentLevel = 1;
 
-var Enemy = function (y) {
+var Enemy = function(y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
 
@@ -29,18 +30,18 @@ var Enemy = function (y) {
   this.speedFactor = getRandomNumber();
 };
 
-function getRandomNumber () {
+function getRandomNumber() {
   return Math.floor((Math.random() * 150) + 50);
 }
 
-Enemy.prototype.speed = function () {
+Enemy.prototype.speed = function() {
   return currentLevel * (Math.pow(2, currentLevel) + this.speedFactor);
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 
-Enemy.prototype.update = function (dt) {
+Enemy.prototype.update = function(dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
@@ -50,11 +51,11 @@ Enemy.prototype.update = function (dt) {
     this.x = -CANVAS_WIDTH / 2;
   }
 
-  checkCollisions(this);
+  player.checkCollisions(this);
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function () {
+Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -62,7 +63,7 @@ Enemy.prototype.render = function () {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function (x, y) {
+var Player = function(x, y) {
   this.sprite = 'images/char-boy.png';
 
   this.width = 90;
@@ -72,14 +73,13 @@ var Player = function (x, y) {
   this.y = y;
 };
 
-Player.prototype.update = function () {
+Player.prototype.update = function() {
   if (this.x >= (CANVAS_WIDTH - this.width)) {
     this.x = CANVAS_WIDTH - this.width;
   } else if (this.x < 0) {
     this.x = X_RST_POS;
   }
 
-  console.log(this.y);
   if (this.y >= (CANVAS_HEIGHT - (this.height + 100))) {
     this.y = CANVAS_HEIGHT - (this.height + 150);
   }
@@ -89,15 +89,15 @@ Player.prototype.update = function () {
     this.y = CANVAS_HEIGHT - this.height - Y_RST_FACTOR;
     currentLevel++;
     modifyLevel();
-    playerWonGame();
+    this.win();
   }
 };
 
-Player.prototype.render = function () {
+Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-Player.prototype.handleInput = function (key) {
+Player.prototype.handleInput = function(key) {
   switch (key) {
     case 'left':
       this.x -= 50;
@@ -114,16 +114,16 @@ Player.prototype.handleInput = function (key) {
   this.update();
 };
 
-function playerWonGame () {
+Player.prototype.win = function() {
   if (currentLevel >= MAX_LEVELS) {
     alertify.alert('YOU WON THE GAME!');
-    resetGame();
+    this.reset();
   }
-}
+};
 
-function resetGame () {
+Player.prototype.reset = function() {
   currentLevel = 1;
-  allEnemies.forEach(function (enemy) {
+  allEnemies.forEach(function(enemy) {
     enemy.x = 0;
   });
 
@@ -131,22 +131,22 @@ function resetGame () {
   player.y = PLAYER_INITIAL_Y;
 
   modifyLevel();
+};
+
+function modifyLevel() {
+  alertify.maxLogItems(1).log('Current Level : ' + currentLevel);
 }
 
-function modifyLevel () {
-  alertify.maxLogItems(1).log("Current Level : " + currentLevel);
-}
-
-function checkCollisions (rect1) {
-  var rect2 = player;
+Player.prototype.checkCollisions = function(rect1) {
+  var rect2 = this;
 
   if (rect1.x < rect2.x + rect2.width &&
     rect1.x + rect1.width > rect2.x &&
     rect1.y < rect2.y + rect2.height &&
     rect1.height + rect1.y > rect2.y) {
-    resetGame();
+    this.reset();
   }
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -158,11 +158,10 @@ var e2 = new Enemy(140);
 var e3 = new Enemy(220);
 
 var allEnemies = [e1, e2, e3];
-allEnemies;
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function (e) {
+document.addEventListener('keyup', function(e) {
   var allowedKeys = {
     37: 'left',
     38: 'up',
