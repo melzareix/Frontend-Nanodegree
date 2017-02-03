@@ -30,11 +30,15 @@ gulp.task('js', function() {
 
 gulp.task('css', function() {
   var idx = gulp.src('src/css/*.css')
-      .pipe(cssnano())
+      .pipe(cssnano({
+        minifyFontValues: false, discardUnused: false
+      }))
       .pipe(gulp.dest('css'));
 
   var pizza = gulp.src('src/views/css/*.css')
-      .pipe(cssnano())
+      .pipe(cssnano({
+        minifyFontValues: false, discardUnused: false
+      }))
       .pipe(gulp.dest('views/css'));
 
   return merge(idx, pizza);
@@ -59,12 +63,6 @@ gulp.task('imgs', function() {
 gulp.task('html', function() {
   var idx = gulp.src('src/*.html')
       .pipe(inlinesource())
-      .pipe(inlineCss({
-        applyStyleTags: true,
-        removeStyleTags: true,
-        applyLinkTags: false,
-        removeLinkTags: false
-      }))
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(gulp.dest(''));
 
