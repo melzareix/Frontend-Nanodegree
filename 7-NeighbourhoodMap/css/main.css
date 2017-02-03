@@ -1,0 +1,112 @@
+/* Custom CSS */
+body {
+    background-color: #373b3e;
+    color: black;
+}
+
+body,
+html,
+#map,
+.main-container,
+.container-fluid,
+.container-fluid .row,
+main {
+    min-height: 100%;
+    height: 100%;
+}
+
+a, a:visited, a:hover, a:active {
+    color: #333;
+}
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.main-container {
+    background-color: #eee;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.ham-menu {
+    font-size: 22px;
+    padding: 12px 10px 10px 0;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    z-index: 1; /* Stay on top */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.no-padding {
+    padding: 0;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 991px) {
+    nav {
+        display: block;
+    }
+
+    .sidebar {
+        padding: 0;
+        width: 0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .sidebar {
+        width: 25%;
+    }
+
+    .main-container {
+        width: 75%;
+    }
+
+    nav {
+        display: none;
+    }
+
+}
+
+.sidebar_shown {
+    width: 50%;
+}
+
+aside form {
+    margin: 10px 10px 0 5px;
+}
+
+aside li {
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(222, 222, 222, 0.2);
+}
+
+aside li a,
+aside li a:visited {
+    color: #dddfde;
+}
+
+aside li a:hover {
+    color: #858585;
+    text-decoration: none;
+}
+
+aside li a:active {
+    color: #dddfde;
+}
+
+#map {
+    height: 100%;
+}
+
+#info-window-content{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
