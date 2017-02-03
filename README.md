@@ -9,6 +9,6 @@ I started the nanodegree on **31/01/2017**.
 - [x] P4 Interactive Resume
 - [x] P5 Arcade Game Clone
 - [ ] P6 Website Optimization
-- [x] P7 Neighborhood Map
+- [x] P7 Neighborhood Map (Part of FSND)
 - [x] P8 Feed Reader Testing
  
