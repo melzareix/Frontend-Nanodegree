@@ -27,7 +27,8 @@ var bio = {
     $('#header').prepend(HTMLheaderName);
 
     var contactInfo = [HTMLmobile, HTMLemail, HTMLtwitter,
-      HTMLgithub, HTMLlocation];
+      HTMLgithub, HTMLlocation
+    ];
     contactInfo.forEach(function(detail) {
       $('#topContacts').append(detail);
     });
@@ -47,23 +48,20 @@ var bio = {
 };
 
 var education = {
-  schools: [
-    {
-      name: 'German university in Cairo',
-      location: 'Cairo, Egypt',
-      degree: 'BSc',
-      majors: ['Computer Science', 'Computer Engineering'],
-      dates: '2014 - 2019 (Expected)',
-      url: 'http://guc.edu.eg/'
-    }
-  ],
-  onlineCourses: [
-    {
-      title: 'Full Stack Foundations',
-      school: 'Udacity',
-      dates: 'Jan 2017',
-      url: 'https://www.udacity.com/courses/full-stack-foundations--ud088'
-    },
+  schools: [{
+    name: 'German university in Cairo',
+    location: 'Cairo, Egypt',
+    degree: 'BSc',
+    majors: ['Computer Science', 'Computer Engineering'],
+    dates: '2014 - 2019 (Expected)',
+    url: 'http://guc.edu.eg/'
+  }],
+  onlineCourses: [{
+    title: 'Full Stack Foundations',
+    school: 'Udacity',
+    dates: 'Jan 2017',
+    url: 'https://www.udacity.com/courses/full-stack-foundations--ud088'
+  },
     {
       title: 'JavaScript Design Patterns',
       school: 'Udacity',
@@ -114,15 +112,14 @@ var education = {
 };
 
 var work = {
-  jobs: [
-    {
-      employer: 'Bdaya NGO',
-      title: 'Web & Mobile Developer',
-      location: 'Cairo, Egypt',
-      dates: 'Nov 2015 - Present',
-      description: 'Developing software for non-profit organizations to' +
-      ' help them reach a wider audience.'
-    },
+  jobs: [{
+    employer: 'Bdaya NGO',
+    title: 'Web & Mobile Developer',
+    location: 'Cairo, Egypt',
+    dates: 'Nov 2015 - Present',
+    description: 'Developing software for non-profit organizations to' +
+    ' help them reach a wider audience.'
+  },
     {
       employer: 'Digital Creativity Company',
       title: 'iOS Developer',
@@ -154,13 +151,12 @@ var work = {
 };
 
 var projects = {
-  projects: [
-    {
-      title: 'Classic Arcade Game',
-      dates: 'Feb 2017',
-      description: 'Clone of the classic game, Frogger.',
-      images: ['http://i.imgur.com/zywzxRo.jpg'],
-    },
+  projects: [{
+    title: 'Classic Arcade Game',
+    dates: 'Feb 2017',
+    description: 'Clone of the classic game, Frogger.',
+    images: ['http://i.imgur.com/zywzxRo.jpg'],
+  },
     {
       title: 'Neighborhood Map',
       dates: 'Jan 2017',
