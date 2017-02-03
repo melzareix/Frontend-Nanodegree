@@ -30,7 +30,7 @@ var bio = {
       HTMLgithub, HTMLlocation
     ];
     contactInfo.forEach(function(detail) {
-      $('#topContacts').append(detail);
+      $('#topContacts, #footerContacts').append(detail);
     });
 
     HTMLbioPic = HTMLbioPic.replace('%data%', this.biopic);
@@ -81,9 +81,12 @@ var education = {
       var schoolName = HTMLschoolName.replace('%data%', school.name);
       var schoolDegree = HTMLschoolDegree.replace('%data%', school.degree);
       var schoolDates = HTMLschoolDates.replace('%data%', school.dates);
+      var schoolLocation = HTMLschoolLocation
+          .replace('%data%', school.location);
 
       $('#education').append(HTMLschoolStart);
       $('.education-entry:last').append(schoolName);
+      $('.education-entry:last').append(schoolLocation);
       $('.education-entry:last').append(schoolDegree);
       $('.education-entry:last').append(schoolDates);
       school.majors.forEach(function(major) {
@@ -106,7 +109,6 @@ var education = {
       $('.education-entry:last').append(courseSchool);
       $('.education-entry:last').append(courseDates);
       $('.education-entry:last').append(courseURL);
-
     });
   }
 };
@@ -131,7 +133,6 @@ var work = {
   ],
   display: function() {
     this.jobs.forEach(function(job) {
-
       var jobEmployer = HTMLworkEmployer.replace('%data%', job.employer);
       var jobTitle = HTMLworkTitle.replace('%data%', job.title);
       var jobDate = HTMLworkDates.replace('%data%', job.dates);
@@ -183,10 +184,6 @@ var projects = {
     });
   }
 };
-
-function initMap() {
-  $('#mapDiv').append(googleMap);
-}
 
 bio.display();
 work.display();
