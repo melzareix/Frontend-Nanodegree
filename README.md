@@ -1,6 +1,6 @@
 # Front-End-Nanodegree
 This repository contains my solutions to the projects of Udacity's FEND.
-I started the nanodegree on **31/01/2017**.
+I started the nanodegree on **31/01/2017**, I finished the full projects on **05/02/2017**.
 
 ## Projects List
 - [x] P1 Mockup to Article
@@ -8,7 +8,7 @@ I started the nanodegree on **31/01/2017**.
 - [x] P3 Personal Portfolio
 - [x] P4 Interactive Resume
 - [x] P5 Arcade Game Clone
-- [ ] P6 Website Optimization
+- [x] P6 Website Optimization
 - [x] P7 Neighborhood Map (Part of FSND)
 - [x] P8 Feed Reader Testing
  
