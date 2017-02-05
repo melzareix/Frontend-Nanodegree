@@ -63,6 +63,12 @@ gulp.task('imgs', function() {
 gulp.task('html', function() {
   var idx = gulp.src('src/*.html')
       .pipe(inlinesource())
+      // .pipe(inlineCss({
+      //   applyStyleTags: true,
+      //   removeStyleTags: true,
+      //   applyLinkTags: false,
+      //   removeLinkTags: false
+      // }))
       .pipe(htmlmin({collapseWhitespace: true}))
       .pipe(gulp.dest(''));
 
